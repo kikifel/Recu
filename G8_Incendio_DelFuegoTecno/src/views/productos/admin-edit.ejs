@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title : 'DFT - Admin Edit'}) %> 
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+<body>
+    <script src="/js/productFormsValidation.js"></script>
+    <%- include('../partials/header') %> 
+
+    <main class="main-general">
+
+        <section class="cont-admin">
+
+            <%- include('../components/adminBar') %> 
+
+
+            <section class="admin-forms">
+                <h2 class="form-title"><%= productRequested.name %> </h2>
+                <hr class="forms__div">
+                <article class="campos__column">
+
+                    <div class="column__forms">
+                        <% if (locals.message) { %>
+                            <p class="errorMsg"><%= message %> </p>
+                                                                
+                        <% }else{ %>
+
+                        <form action="/products/admin/edit/<%= productRequested.id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="forms__campos" id="productForms">
+                            <label for="name">
+                                <p class="lg__descrip">Nombre del producto*</p>
+                                <p class="jsError" id="prod-name"></p>                       
+                                <% if (locals.errors && errors.name) {%> 
+                                    <p class="errorMsg"><%= errors.name.msg %></p>
+                                <%}  %>                         
+                                <input class="form__fields" type="text" id="name" name="name" value="<%= productRequested.name %>"  >
+                                <span class="feedback"></span>
+                            </label>
+                            <label for="category">
+                                <p class="lg__descrip">Categoría*</p>
+                                <p class="jsError"></p> 
+                                <% if (locals.errors && errors.category) {%> 
+                                    <p class="errorMsg"><%= errors.category.msg %></p>
+                                <%}  %>                            
+                            <select class="form__fields" id="category" name="category" >
+                                <% categories.forEach(category => { %> 
+                                    <option value="<%= category.id %>" <%= productRequested.category_id === category.id ? 'selected' : ''%>><%= category.name %> </option>
+                                <% }) %> 
+
+                            </select>
+                            <span class="feedback"></span>
+                            </label>
+                            <label for="price">
+                                <p class="lg__descrip">Precio*</p>
+                                <p class="jsError"></p> 
+                                <% if (locals.errors && errors.price) {%> 
+                                    <p class="errorMsg"><%= errors.price.msg %></p>
+                                <%}  %>                     
+                                <input class="form__fields" type="text" id="price" name="price" value="<%= productRequested.price %>"  >
+                                <span class="feedback"></span>
+                            </label>
+                            <label for="stock">
+                                <p class="lg__descrip">Stock*</p>
+                                <p class="jsError"></p> 
+                                <% if (locals.errors && errors.stock) {%> 
+                                    <p class="errorMsg"><%= errors.stock.msg %></p>
+                                <%}  %>                           
+                                <input class="form__fields" type="text" id="stock" name="stock" value="<%= productRequested.stock %>"  >
+                                <span class="feedback"></span>
+                            </label>
+                            <label for="image">
+                                <p class="lg__descrip">Foto de producto*</p>
+                                <p class="jsError" id="prod-imgs"></p> 
+                                <% if (locals.errors && errors.image) {%> 
+                                    <p class="errorMsg"><%= errors.image.msg %></p>
+                                <%}  %> 
+                                <input class="form__fields" type="file" name="image" id="image" accept=".jpg, .png, .webp" multiple>
+                                <span class="feedback"></span>
+                            </label>
+                            <label for="thumb">
+                                <% if (locals.errors && errors.thumb) {%> 
+                                    <p class="errorMsg"><%= errors.thumb.msg %></p>
+                                <%}  %> 
+                                <p class="lg__descrip">Miniatura*</p>
+                                <input class="form__fields" type="file" name="thumb" id="thumb" accept=".jpg, .png, .webp">
+                                <span class="feedback"></span>
+                            </label>
+          
+                    </div>
+                    <div class="column__forms">
+
+                            <label for="description">
+                                <p class="lg__descrip">Descripción*</p>
+                                <p class="jsError" id="prod-descript"></p> 
+                                <% if (locals.errors && errors.description) {%> 
+                                    <p class="errorMsg"><%= errors.description.msg %></p>
+                                <%}  %>                        
+                                <textarea id="editor" class="form__fields" id="description" name="description" ><%= productRequested.description %></textarea>
+                                <span class="feedback"></span>
+                            </label>
+                            <label for="specs">
+                                <p class="lg__descrip">Especificaciones*</p>
+                                <% if (locals.errors && errors.specs) {%> 
+                                    <p class="errorMsg"><%= errors.specs.msg %></p>
+                                <%}  %>                             
+                                <textarea  class="form__fields" id="specs" name="specs"  ><%= productRequested.specs %></textarea>
+                                <span class="feedback"></span>
+                            </label>
+                            <p class="lg-msg back"><a href="/products/admin">🡄 Volver</a></p>
+
+                            <button class="main-btns" type="submit">Editar</button>
+                        
+                        </form>
+                        <% } %> 
+                    </div>
+                </article>
+                
+            </section>
+
+
+        </section>
+
+
+    </main>
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+        ClassicEditor
+        .create( document.querySelector( '#specs' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+    });
+       
+    </script>
+    
+    <%- include('../partials/footer') %> 
+</body>
+</html>

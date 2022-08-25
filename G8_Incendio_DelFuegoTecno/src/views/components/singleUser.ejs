@@ -1,0 +1,17 @@
+<div class="adminProductCont">
+    <div class="adminProductCont__img">
+        <img src="/img/users/<%= user.image %>" alt="Imagen de <%= user.first_name %>">
+    </div>
+    <p class="adminProductCont__name user-id">User ID: <%= user.id %></p>
+    <hr class="name__div">
+    <p class="adminProductCont__data">Nombre completo: <%= user.first_name + ' ' + user.last_name + ' -' + user.roles.name + '-' %></p>
+    <p class="adminProductCont__data data-email">Email: <%= user.email %></p>
+    <hr class="name__div">
+    <div class="adminProductCont__btns">
+        <form action="/users/edit/<%= user.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Estás a punto de eliminar al usuario. ¿Querés continuar?')">
+            <button aria-label="borrar" type="submit" class="delete__btn"><i class="fas fa-trash"></i> Eliminar</button>
+        </form>
+        <button type="button" class="trashCan__btn"><a href="/users/edit/<%= user.id %>"><i class="fa fa-edit"></i> Editar</a></button>
+        <button type="button" class="trashCan__btn"><a href="/users/profile"><i class="fas fa-user-alt"></i> Ver perfil</a></button>
+    </div>
+</div>

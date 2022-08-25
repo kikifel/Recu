@@ -1,0 +1,30 @@
+
+    <div class="caja-producto">
+        <div class="caja-producto-izquierda">
+            <img class="img-producto" src="/img/products/<%= product.thumb %>" alt="Foto de kolink inspire k20">
+        </div>
+
+        <div class="caja-producto-derecha">
+            <div class="caja-producto-derecha-top">
+                <div class="caja-descripcion-producto">
+                    <a class="linkToProduct" href="/products/detail/<%= product.id %>"><%= product.name %></a>
+                </div>
+                <div class="caja-trashCan">
+                    <button aria-label= "borrar" type="button" class="trashCan__btn"><i class="fas fa-trash"></i></button>
+                </div>                              
+            </div>
+            <div class="caja-producto-derecha-bottom">
+                <div class="counter">
+                    <button aria-label= "restar" type="submit" class="counter__btn"><i class="fa fa-minus-circle"></i></button>
+                    <form action="">
+                        <label for="count">
+                            <input id="count" class="count-form" name="count" type="number" value="1" disabled="true">
+                        </label>
+                    </form>
+                    <button aria-label= "sumar" type="submit" class="counter__btn"><i class="fa fa-plus-circle"></i></button>
+                </div>
+                <div class="caja-price">$<%= product.price.toLocaleString('es-ES') %></div>                                
+            </div>
+
+        </div>
+    </div>

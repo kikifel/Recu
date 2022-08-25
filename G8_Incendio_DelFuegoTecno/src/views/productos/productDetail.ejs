@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: productRequested.name})%> 
+<body>
+    
+    <%- include('../partials/header')%> 
+
+    <main class="main-general">
+        
+        <div class="article-breadCrum">                    
+            <a class="breadCrum" href="/">Home/<a class="breadCrum" href="/products/category/<%= productRequested.categories.id %>"><%= productRequested.categories.name %>/<a class="breadCrum" href="/products/detail/<%= productRequested.id %>"><%= productRequested.name %> </a>                      
+        </div>
+
+        <section class="cont-det">
+            
+            <section class="cont-det-producto-top">            
+            
+                <!-- Contenedor de imagen del producto -->
+                <section class="cont-img-prod">
+                    
+                    <div class="prod__img">
+                        <img class="img__ppal" src="/img/products/<%= productRequested.image_01 %>" alt="<%= productRequested.name %> ">
+                    </div>
+                    
+                    <!-- Imagenes alternativas -->
+                    <div class="prod__alt">
+                        <div class="alt__img">
+                            <img class="img__fotito" src="/img/products/<%= productRequested.image_02 %> " alt="<%= productRequested.name %>">
+                        </div>
+                        <div class="alt__img">
+                            <img class="img__fotito" src="/img/products/<%= productRequested.image_03 %>" alt="<%= productRequested.name %>">
+                        </div>
+                            <div class="alt__img">
+                            <img class="img__fotito" src="/img/products/<%= productRequested.image_04  %>" alt="<%= productRequested.name %>">
+                        </div>
+                    </div>
+                </section>
+    
+    
+                <!-- contenedor de Descripcion del producto -->
+                <section class="cont_des_prod">
+                    <h1 class="titulo__prod"><%= productRequested.name %> </h1>
+                    <hr class="titulo__divis"></hr>
+                    
+                    <!-- Barra icnonos -->
+                    <div class="iconos_prod">
+
+                        <div class="precio_prod">
+                            <p>$<%= productRequested.price.toLocaleString('es-ES') %> </p>
+                        </div>  
+
+                        
+                        <div class="detail__buttons">
+                            <button type="button" class="action-btns bookmark" aria-label= "favorites"><i class="far fa-heart"></i></button>  
+                            <button type="button" class="action-btns share-cart" aria-label= "add to cart"><i class="material-icons">add_shopping_cart</i></button>  
+                            <button type="button" class="action-btns share-cart" aria-label= "share"><i class="fa fa-share-alt"></i></button>
+                        </div>
+                    </div>
+
+                    <hr class="divisor_info_ventas"></hr>
+
+                    <div class="info_venta_prod">
+                        <i class='fas fa-wallet'></i>
+                        <p class="info_venta_prod-text">12 cuotas sin interés de $<%=( Math.round((productRequested.price / 12) * 100 ) / 100).toLocaleString('es-ES') %>  </p>
+                    </div>
+
+                    <hr class="divisor_info_ventas"></hr>
+
+                    <div class="info_venta_prod">
+                        <i class='fas fa-store'></i>
+                        <p class="info_venta_prod-text">Retiro gratis por sucursal</p>
+                    </div>
+
+                    <hr class="divisor_info_ventas"></hr>
+
+                    <div class="info_venta_prod">
+                        <i class='fas fa-truck'></i>
+                        <p class="info_venta_prod-text">Envios a todo el pais</p>
+                    </div>
+
+                    <hr class="divisor_info_ventas"></hr>
+
+                    <div class="info_venta_prod">
+                        <i class='fas fa-user-shield'></i>
+                        <p class="info_venta_prod-text">Garantía (1 año)</p>
+                    </div>
+                    
+                    <div class="desc_prod">
+
+                        <div class="rate-icons">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+
+                            <div class="rate-opinions">
+                                <p>(50 opiniones)</p>
+                            </div>
+                        </div>
+
+                        <%- include('../components/buyButton') %> 
+                    </div>
+
+                </section>         
+                
+            </section>
+
+            <section class="cont-det-producto-bot">
+                <!-- Botones de Descripcion de producto -->
+                <div class="desc_prod_btns">
+                    <button type="button" class="prod-btn show-descript" aria-label="description">Descripción</button>
+
+                    <button type="button" class="prod-btn show-specs" aria-label="specs">Especificaciones</button>
+                </div>
+
+                <hr class="titulo__divis"></hr>
+
+                <!-- Descripcion producto -->
+                <div class="product-info">
+                    <p class="product-info description"><%- productRequested.description %> </p>
+                </div>
+        
+                <div class="product-info">
+                    <p class="product-info specs">Características técnicas de   <%= productRequested.name  %> </p>
+                    <p class="product-info specs"> <%= productRequested.specs %> </p>
+
+                </div>  
+            </section>
+        </section>
+       
+        <!-- CARRUSEL DESTACADOS 2 -->
+        <section class="main-home__cont-prod">
+
+            <h2 class="cont-prod__categorias">Productos similares</h2>
+        
+                <nav class="cont-prod__articulos">
+
+                    <% productsDB.forEach((product, index) => { %>
+
+                        <% if (index < 4) { %>
+    
+                            <%- include('../components/carruselProduct', {product : product}) %>
+    
+                        <% } %>
+    
+                    <% }) %> 
+        
+                </nav>
+        
+        </section>
+
+    </main>
+
+    <%- include('../partials/footer') %> 
+            
+</body>
+</html>

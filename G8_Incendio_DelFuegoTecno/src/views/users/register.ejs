@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title : 'DFT - Registrate'}) %> 
+<body>
+    <script src="/js/userFormsValidation.js"></script>
+    <%- include('../partials/header') %> 
+
+    <main class="main-general">
+
+        <section class="cont-form-rg">
+
+            <form class="form-registro" action="/users/register" method="POST" enctype="multipart/form-data" id= "userForms">
+            
+                <h2 class="titulo-login">Registro de usuarios</h2>
+
+                <article class="cont-rg">
+
+                    
+                    <div class="registro__cont">
+
+                        <label for="first_name">
+                            <p class="lg__descrip ">Nombre*</p>
+                            <p class="jsError"></p>                        
+                            <% if (locals.errors && errors.first_name) {%> 
+                                <p class="errorMsg"><%= errors.first_name.msg %></p>
+                            <%}  %> 
+                            <input type="text" id="first_name" name="first_name" class="form__fields <%= locals.errors && errors.first_name ? 'invalid' : '' %>" value="<%= locals.oldData ? oldData.first_name : null %>" placeholder="Juan">
+                        </label>
+                    
+                        <label for="last_name">
+                            <p class="lg__descrip">Apellido*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.last_name) {%> 
+                                <p class="errorMsg"><%= errors.last_name.msg %></p>
+                            <%}  %> 
+                            <input type="text" id="last_name" name="last_name" class="form__fields <%= locals.errors && errors.last_name? 'invalid' : '' %>" value="<%= locals.oldData ? oldData.last_name : null %>" placeholder="Perez">
+                        </label>
+
+                        <label for="birth">
+                            <p class="lg__descrip">Fecha de nacimiento*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.birth) {%> 
+                                <p class="errorMsg"><%= errors.birth.msg %></p>
+                            <%}  %> 
+                            <input type="date" id="birth" name="birth" class="form__fields <%= locals.errors && errors.birth ? 'invalid' : '' %>"value="<%= locals.oldData ? oldData.birth : null %>">
+                        </label>
+                        
+                        <label for="image">
+                            <p class="lg__descrip">Foto de perfil</p>
+                            <p class="jsError" id="imageRegister"></p>  
+                            <% if (locals.errors && errors.image) {%> 
+                                <p class="errorMsg"><%= errors.image.msg %></p>
+                            <%}  %> 
+                            <input  type="file" name="image" id="image" class="form__fields" accept=".jpg, .png, .webp">
+                            <span class="feedback"></span>
+                        </label>
+                        
+                        <label for="phone">
+                            <p class="lg__descrip">Teléfono*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.phone) {%> 
+                                <p class="errorMsg"><%= errors.phone.msg %></p>
+                            <%}  %> 
+                            <input type="phone" name="phone" id="phone" class="form__fields <%= locals.errors && errors.phone ? 'invalid' : '' %>" value="<%= locals.oldData ? oldData.phone : null %>"placeholder="(011)11111111">
+                        </label>
+
+                    </div>
+                    
+                    <h3 class="rg__subtitulo">Dirección</h3>
+                    <div class="registro__cont">
+                        <label for="address">
+                            <p class="lg__descrip">Calle y altura*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.address) {%> 
+                                <p class="errorMsg"><%= errors.address.msg %></p>
+                            <%}  %> 
+                            <input  type="text" id="address" name="address" class="form__fields <%= locals.errors && errors.address ? 'invalid' : '' %>" value="<%= locals.oldData ? oldData.address : null %>"placeholder="Av. Colón 123">
+                        </label>
+                    </div>
+                    <div class="registro__cont">
+                        <label for="cp">
+                            <p class="lg__descrip">Codigo postal*</p>
+                            <p class="jsError" id="cp"></p>  
+                            <% if (locals.errors && errors.cp) {%> 
+                                <p class="errorMsg"><%= errors.cp.msg %></p>
+                            <%}  %> 
+                            <input type="number" id="cp" name="cp" class="form__fields <%= locals.errors && errors.cp ? 'invalid' : '' %>"value="<%= locals.oldData ? oldData.cp : null %>"placeholder="1234">
+                        </label>
+                    </div>
+                    <div class="registro__cont">
+                        <label for="city">
+                            <p class="lg__descrip">Localidad*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.city) {%> 
+                                <p class="errorMsg"><%= errors.city.msg %></p>
+                            <%}  %> 
+                            <input type="text" id="city" name="city" class="form__fields <%= locals.errors && errors.city ? 'invalid' : '' %>"  value="<%= locals.oldData ? oldData.city : null %>"placeholder="CABA">
+                        </label>
+                    </div>
+                    
+
+
+                    <h3 class="rg__subtitulo">Datos de la cuenta</h3>
+                    <div class="registro__cont">
+                        <label for="email">
+                            <p class="lg__descrip">E-mail*</p>
+                            <p class="jsError" id="emailError"></p>  
+                            <% if (locals.errors && errors.email) {%> 
+                                <p class="errorMsg"><%= errors.email.msg %></p>
+                            <%}  %> 
+                            <input  type="email" id="email" name="email" class="form__fields <%= locals.errors && errors.email ? 'invalid' : '' %>"value="<%= locals.oldData ? oldData.email : null %>"placeholder="juan.perez@email.com">
+                        </label>
+                    </div>
+                    
+                    <div class="registro__cont">
+                        <label for="password">
+                            <p class="lg__descrip">Contraseña*</p>
+                            <p class="jsError" id="passwordError"></p>  
+                            <% if (locals.errors && errors.password) {%> 
+                                <p class="errorMsg"><%= errors.password.msg %></p>
+                            <%}  %> 
+                            <input type="password" id="password" name="password"  class="form__fields <%= locals.errors && errors.password? 'invalid' : '' %>" placeholder="******">
+                        </label>
+
+                    <div class="registro__cont">
+                        <label for="passwordRepeat">
+                            <p class="lg__descrip">Confirmar contraseña*</p>
+                            <p class="jsError" id="passwordRepeatError"></p>  
+                            <% if (locals.errors && errors.passwordRepeat) {%> 
+                                <p class="errorMsg"><%= errors.passwordRepeat.msg %></p>
+                            <%}  %> 
+                            <input type="password" id="passwordRepeat" name="passwordRepeat" placeholder="******"  class="form__fields">
+                            <span class="feedback"></span>
+                        </label>
+                    </div>
+                    
+                </article>
+
+                <button class="main-btns" type="submit">Registrate</button>
+                <p class="lg-msg">¿Ya tenés una cuenta?  <a href="/users/login">Iniciá Sesión</a></p>
+                
+            </form>
+
+        </section>
+
+    </main>
+    
+    
+    <%- include('../partials/footer') %> 
+    
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title : 'DFT - Edición de usuario'}) %> 
+<body>
+    <script src="/js/userFormsValidation.js"></script>
+    <%- include('../partials/header') %> 
+        
+
+    <main class="main-general">
+        <section class="cont-form-rg">
+
+            <form class="form-registro" action="/users/edit/<%= userProfile.id %>?_method=PUT" method="POST" enctype="multipart/form-data" id="userForms">
+            
+                <h2 class="titulo-login">Editando usuario <%= userProfile.firstName %></h2>
+
+                <article class="cont-rg">
+
+                    
+                    <div class="registro__cont">
+
+                        <label for="first_name">
+                            <p class="lg__descrip">Nombre*</p>  
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.first_name) {%> 
+                                <p class="errorMsg"><%= errors.first_name.msg %></p>
+                            <%}  %>                       
+                            <input class="form__fields" type="text" id="first_name" name="first_name" value="<%= userProfile.first_name %>" >
+                        </label>
+                    
+                        <label for="last_name">
+                            <p class="jsError"></p>  
+                            <p class="lg__descrip">Apellido*</p>
+                            <% if (locals.errors && errors.last_name) {%> 
+                                <p class="errorMsg"><%= errors.last_name.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="text" id="last_name" name="last_name" value="<%= userProfile.last_name %>" >
+                        </label>
+
+                        <label for="birth">
+                            <p class="lg__descrip">Fecha de nacimiento*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.birth) {%> 
+                                <p class="errorMsg"><%= errors.birth.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="date" id="birth" name="birth" value="<%= userProfile.birth %>">
+                        </label>
+                        
+                        <label for="image">
+                            <p class="lg__descrip">Foto de perfil</p>
+                            <p class="jsError" id="imageRegister"></p>  
+                            <input class="form__fields" type="file" name="image" id="image" accept=".jpg, .png, .webp">
+                        </label>
+                        
+                        <label for="phone">
+                            <p class="lg__descrip">Teléfono*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.phone) {%> 
+                                <p class="errorMsg"><%= errors.phone.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="phone" name="phone" id="phone" value="<%= userProfile.phone %>" >
+                        </label>
+
+                    </div>
+                    
+                    <h3 class="rg__subtitulo">Dirección</h3>
+                    <div class="registro__cont">
+                        <label for="address">
+                            <p class="lg__descrip">Calle y altura*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.address) {%> 
+                                <p class="errorMsg"><%= errors.address.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="text" id="address" name="address" value="<%= userProfile.address %>" >
+                        </label>
+                    </div>
+                    <div class="registro__cont">
+                        <label for="cp">
+                            <p class="lg__descrip">Codigo postal*</p>
+                            <p class="jsError" id="cp"></p>  
+                            <% if (locals.errors && errors.cp) {%> 
+                                <p class="errorMsg"><%= errors.cp.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="number" id="cp" name="cp" value="<%= userProfile.cp %>" >
+                        </label>
+                    </div>
+                    <div class="registro__cont">
+                        <label for="city">
+                            <p class="lg__descrip">Localidad*</p>
+                            <p class="jsError"></p>  
+                            <% if (locals.errors && errors.city) {%> 
+                                <p class="errorMsg"><%= errors.city.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="text" id="city" name="city" value="<%= userProfile.city %>" >
+                        </label>
+                    </div>
+                    
+                    <h3 class="rg__subtitulo">Datos de la cuenta</h3>
+                    <div class="registro__cont">
+                        <label for="email">
+                            <p class="lg__descrip">E-mail*</p>
+                            <p class="jsError" id="emailError"></p>  
+                            <% if (locals.errors && errors.email) {%> 
+                                <p class="errorMsg"><%= errors.email.msg %></p>
+                            <%}  %> 
+                            <input class="form__fields" type="email" id="email" name="email" value="<%= userProfile.email %>" >
+
+                        </label>
+                    </div>
+
+                    <% if (locals.isAdmin) { %>
+                    <div class="registro__cont">
+                        <label for="role">
+                            <p class="lg__descrip">Rol de usuario</p>
+                            <select name="role" id="role" class="form__fields">
+                                <option value=" " disabled>Elegí un rol</option>
+                                <% roles.forEach(role => { %>
+                                    <option value= "<%= role.id %> " <%= userProfile.role_id === role.id ? 'selected' : ''%>><%= role.name %> </option>
+                                <% }) %>
+
+                            </select>
+                        </label>
+                    </div>
+                    <% } %>
+
+                    <p class="lg-msg back"><a href="/users/profile">🡄 Volver</a></p>
+                    
+                </article>
+                <button class="main-btns" type="submit">Editar</button>
+                
+            </form>
+
+        </section>
+
+    </main>
+    
+    
+    <%- include('../partials/footer') %> 
+    
+</body>
+</html>

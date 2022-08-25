@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title : 'DFT - Login'}) %> 
+<body>
+
+    <%- include('../partials/header') %> 
+
+    <script src="/js/userFormsValidation.js"></script>
+
+
+    <main class="main-general">
+
+        <section class="cont-form-login">
+
+            
+            <form class="login__form" action="/users/login" method="POST" id="userForms">
+                
+                <h2 class="titulo-login">Login</h2>
+                
+                    <article class="form-lg">
+                        <% if (locals.errors && errors) {%>
+                            <p class="errorMsg"><%= errors.msg %> </p>                          
+                        <% } %>
+
+                        <div class="form-lg__campos">
+                            <label for="email">
+                                <p class="lg__descrip">Correo Electrónico</p>
+                                <p class="jsError" id="emailError"></p>  
+                                  <input class="form__fields" type="email" name="email" id="email" placeholder="usuario@mail.com">
+                                  <span class="feedback"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-lg__campos">
+                            <label for="password">
+                                <p class="lg__descrip">Contraseña</p>  
+                                <p class="jsError" id="passwordError"></p>  
+                                <input class="form__fields" type="password" name="password" id="password" placeholder="******">
+                                <span class="feedback"></span>
+                            </label>
+                        </div>
+                        <div class="form-lg__campos">
+                            <label for="recodarme">
+                                <p class="lg__descrip">Recordame</p>
+                                <input type="checkbox" value="yes" name="recordame"><br>
+                            </label>
+                        </div> 
+                        
+                    </article>
+                        
+                    <button class="main-btns" type="submit" value="">Ingresá</button>
+                    
+                    <p class="lg-msg">¿No tenés cuenta?  <a href="/users/register">Registrate</a></p>
+                    
+                </form>
+                
+        </section>
+
+
+    </main>
+
+    <%- include('../partials/footer') %> 
+    
+</body>
+</html>

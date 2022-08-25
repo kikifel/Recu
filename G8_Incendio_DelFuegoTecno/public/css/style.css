@@ -1,0 +1,759 @@
+/* Variables de color */
+
+:root {
+
+    /*Colors*/
+    --negro: #000;
+    --fondo-main: #1E1F24;
+    --gris-int: #444444;
+    --gris-osc: #7E7E83;
+    --gris: #B3B3B3;
+    --gris-medio: #ababab;
+    --gris-claro: #e3e3e3;
+    --blanco: #fff;
+    --turq: #4FD0D9;
+    --celeste-logo: #3CB9FC;
+    --cyan: #07F7FE;
+    --aqua: #08FBD2;
+    --yellow: #F4D30F;
+    --magenta: #EE2B79;
+    --violet: #B537F2;
+    --rb-gradient: linear-gradient(to right, var(--celeste-logo), var(--violet), var(--magenta), var(--yellow), var(--aqua), var(--cyan));
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', 'sans-serif';
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-general{
+    background-color: var(--fondo-main);
+    padding: 90px 0 50px 0;
+    min-height: 100vh;
+    width: 100%
+}
+
+
+
+
+/* -------- MAIN HOME -------- */
+
+
+.main-home{
+    background-color: var(--fondo-main);
+    padding-top: 102px;
+    min-height: 960px;
+    width: 100%;
+}
+
+/* -------- Carrusel imagenes grandes -------- */
+
+.ss-home-ppal{
+    width: 100%;
+}
+
+.ss-home-ppal__img{
+    object-fit: cover;
+    width: 100%;
+}
+
+/* -------- Botones categorías -------- */
+
+.main-home__sect-cont {
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 56px;
+    justify-content: space-evenly;
+    margin: 32px 0;
+    width: 100%;
+
+}
+
+.nav-cont{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.vertical-div{
+    border: none;
+}
+
+.nav-cont__buttons{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.buttons__links {
+    background: none;
+    border: none;
+    cursor: default;
+    display: none;
+    font-family: "Roboto Condensed";
+    font-size: 18px;
+    padding-top: 15px;
+    text-rendering: auto;
+
+}
+
+.buttons__links > a{
+    color:var(--gris-medio);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+.buttons__round{
+    background-color: transparent;
+    border: none;
+    cursor: default;
+    font-size: 32px;
+    margin: 0 6px 0 6px;
+    padding: 8px;
+
+}
+
+.buttons__round > a > i{
+    color:var(--gris-medio);
+    text-decoration: none;
+    max-height: 30px;
+}
+
+.nav-cont__buttons:hover .buttons__round > a > i{
+    color:var(--magenta);
+    transition: all 300ms linear;
+}
+
+.nav-cont__buttons:hover .buttons__links > a{
+    color:var(--magenta);
+    transition: all 300ms linear;
+}
+
+/* Contacto*/
+.contact-us{
+    align-items: center;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 15px auto;
+    max-width: 340px;
+    padding: 12px;
+    height: 396px;
+    width: 80%;
+}
+
+.cont-online{
+    border: 1px solid var(--magenta);
+}
+.cont-store{
+    border: 1px solid var(--celeste-logo);
+}
+
+.contact-us__img {
+    text-align: center;
+}
+.contact-us__img > img{
+    width: 126px;
+}
+
+.contact-us__title {
+    font-size: 24px;
+    margin: 12px auto;
+    text-align: center;
+}
+
+.title-online {
+    color: var(--magenta);
+}
+.title-store {
+    color: var(--celeste-logo);
+}
+
+.contact-us__text{
+    color: var(--gris-claro);
+    font-size: 14px;
+}
+
+.contact-us__link{
+    align-self: flex-end;
+    color: var(--celeste-logo);
+    cursor: pointer;
+    margin: 11px 0 0 0;
+    text-decoration: underline;
+}
+
+
+/* Banner Ad */
+
+.index__banner-ad{
+    display: none;
+}
+
+/* Carrusel destacados  */
+
+.main-home__cont-prod{
+    margin: 74px auto auto auto;
+    padding-bottom: 68px;
+    width: 90%;
+
+}
+
+.cont-prod__categorias{
+    color: var(--gris-medio);
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.cont-prod__articulos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.cont-dest{
+    background-color: var(--fondo-main);
+    border: var(--gris-medio) 1px solid;
+    border-radius: 12px;
+    height: 388px;
+    margin: 15px;
+    position: relative;
+    scroll-snap-type: x mandatory;
+    width: 260px;
+}
+
+@keyframes box-highlight {
+    0% {
+      box-shadow: 0px 0px 18px 2px var(--magenta);
+    }
+    35% {
+      box-shadow: 0px 0px 18px 2px var(--yellow);
+    }
+    50% {
+      box-shadow: 0px 0px 18px 2px var(--aqua);
+    }
+    75% {
+      box-shadow: 0px 0px 18px 2px var(--cyan);
+    }
+    100% {
+      box-shadow: 0px 0px 18px 2px var(--violet);
+    }
+
+}
+
+.cont-dest:hover{
+    transform: scale(105%, 105%);
+    transition: transform 300ms ease-in;
+    animation: box-highlight 2s linear infinite;
+} 
+.cont-dest:hover .descripcion__divis{
+    border-top: 1px var(--magenta) solid;
+} 
+
+.cont-dest > a{
+    color: var(--negro);
+    text-decoration: none;
+}
+
+.cont-dest__img {
+    background-color: var(--blanco);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 248px;
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.img__producto{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 24px;
+}
+
+.cont-dest__descripcion{
+    height: 124px;
+    padding: 5px 15px;
+
+}
+
+.descripcion__divis{
+    border: none;
+    width: 100%;
+    height: 6px;
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+    background: var(--rb-gradient)
+}
+
+.descripcion__nombre-prod{
+    color: var(--gris-claro);
+    font-size: 16px;
+    font-weight: 500;
+    height: 42px;
+    margin: 8px auto 38px auto;
+    overflow-y: hidden;
+    padding: 5px;
+}
+
+.descripcion__precio{
+    color: var(--gris-claro);
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 5px;
+}
+
+.cont-dest__carrito{
+    background-color: transparent;
+    border: none;
+    bottom: 2%;
+    cursor: pointer;
+    position: absolute;
+    right: 3%;
+    text-decoration: none;
+}
+
+.cont-dest__carrito > i{
+    color: var(--celeste-logo);
+    font-size: 28px;
+}
+
+.cont-dest__carrito > i:hover{
+    color: var(--violet);
+}
+
+.cont-dest__fav{
+    background-color: transparent;
+    border: none;
+    color: var(--magenta);
+    cursor: pointer;
+    font-size: 22px;
+    position: absolute;
+    right: 2%;
+    top: 2%;
+}
+
+/* Imagen central destacada */
+
+/* mobile */
+.featured-mobile{
+    margin: 0 auto;
+    width: 90%;
+}
+.featured-mobile__img{
+    width: 100%;
+}
+
+/* desktop */
+
+.home-dest-central{
+    display: none;
+    margin: 0 auto 16px auto;
+    width: 100%;
+}
+
+.home-dest-central__img{
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Producto destacado */
+
+.featured-product{
+    background-color: var(--negro);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 90%;
+}
+.featured__image-cont{
+    width: 100%;
+}
+.featured__image-cont > img{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.featured__info-cont{
+    margin: 12px auto;
+    text-align: center;
+    width: 90%;
+}
+
+.featured__title{
+    color: var(--magenta);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.feat-div{
+    border: 1px var(--magenta) solid;
+    width: 25%;
+}
+
+.featured__subt{
+    color: var(--gris-claro);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.featured__text{
+    color: var(--gris-claro);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: left;
+}
+
+.featured__link{
+    color: var(--magenta);
+    text-decoration: none;
+}
+
+/* Banner marcas */
+
+.main-home__banner-marcas{
+    display: none;
+    flex-direction: column;
+}
+
+.banner-marcas__titulo{
+    font-family: 'Roboto Condensed';
+    font-size: 24px;
+    color: var(--celeste-logo);
+    margin: 32px 0 15px 0;
+    text-align: center;
+}
+
+.banner-marcas__logos{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--blanco);
+    height: 136px;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.logos__link{
+    background-color: var(--blanco);
+    height: 65%;
+    width: 8%;
+}
+
+
+.link__img{
+    height: 90%;
+    object-fit: contain;
+    padding: 5px;
+    width: 90%;
+    position: relative;
+    top: 5px;
+    left: 4px;
+}
+
+
+/* -------- MAIN CONTACTO  -------- */
+.contactForm{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+.contactForm__areas >p{
+    text-align: center;
+}
+.areas__subt{
+    color: var(--celeste-logo);
+}
+.areas__info{
+    color: var(--gris-claro);
+
+}
+
+/**** ERROR(404) */
+.image-404{
+    margin: 24px auto 0 auto;
+    text-align: center;
+    width: 340px;
+}
+
+.image-404 > img{
+    width: 330px;
+}
+
+.image-404 > p{
+    color: var(--celeste-logo);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 auto;
+    width: 75%;
+}
+
+/**** MEDIA QUERIES */
+
+@media (min-width:578px){
+
+}
+
+@media (min-width:769px){
+
+   
+}
+
+@media (min-width:993px){
+
+    .main-general{
+        min-height: 0;
+    }
+    
+
+    /* HOME */
+
+    .main-home{
+        padding-top: 103px;
+    }
+
+    .ss-home-ppal {
+        height: 286px;
+    }
+
+    .main-home__sect-cont{
+        display: flex;
+        height: 148px;
+    }
+
+    .buttons__round{
+        font-size: 42px;
+    }
+
+    .buttons__links {
+        display: block;
+    }
+
+    .cont-prod__categorias{
+        text-align: left;
+    }
+
+    .cont-prod__articulos {
+        justify-content: space-between;
+    }
+
+    .cont-dest{
+        margin: 15px 15px 15px 0;
+    }
+
+    .main-home__banner-marcas{
+        display: block;
+    }
+
+    .nav-cont{
+        width: 85%;
+    }
+
+    .vertical-div{
+        border: none;
+        border-left: 1px solid var(--magenta);
+        display: inline-block;
+        margin: 0;
+        height: 69px;
+        width: 1px;
+    }
+    .main-home__cont-prod {
+        width: 85%;
+    }
+
+    .featured-product{
+        flex-direction: row;
+        max-height: 584px;
+        width: 85%;
+    }
+
+    .featured__info-cont{
+        padding: 16px;
+        position: relative;
+    }
+
+    .featured__link{
+        position: absolute;
+        bottom: 4px;
+        right: 16px;
+    }
+
+    .index__contact-us{
+        display: flex;
+        margin: 80px auto;
+        justify-content: space-between;
+        width: 85%;
+    }
+
+    .contact-us{
+        flex-direction: row;
+        justify-content: space-around;
+        height: 206px;
+        margin: 12px 0;
+        max-width: 1500px;
+        position: relative;
+        width: 416px;
+    }
+
+    .contact-us__img > img {
+        width: 88px;
+    }
+
+    .contact-us__info{
+        text-align: right;
+        width: 70%;
+    }
+
+    .text-store{
+        text-align: left;
+    }
+
+    .store__img > img{
+        position: absolute;
+        bottom: 0px;
+        right: 6px;
+        width: 150px;
+    }
+
+    .home-dest-central{
+        display: block;
+    }
+
+    .featured-mobile{
+        display: none;
+    }
+
+
+    /*CONTACTO*/
+    .contactForm{
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 50px;
+        width: 85%;
+    }
+
+    .contactForm__areas >p{
+        text-align: left;
+    }
+
+    .contactForm__areas{
+        width: 40%;
+
+    }
+
+}
+
+@media (min-width:1200px){
+
+
+    /* HOME */
+
+    .ss-home-ppal {
+        height: 332px;
+    }
+
+    .main-home__cont-prod {
+        width: 85%;
+    }
+
+    .featured__title{
+        margin: 8px 0 24px 0;
+        font-size: 32px;
+    }
+
+    .featured__subt{
+        padding: 0 18px;
+        font-size: 24px;
+    }
+
+    .featured__text{
+        padding: 0 24px;
+        margin-top: 16px;
+        font-size: 16px;
+    }
+
+
+    /* ERROR */
+    .image-404{
+        width: 600px;
+    }
+    
+    .image-404 > img{
+        width: 472px;
+    }
+    
+    .image-404 > p{
+        font-size: 24px;
+        width: 100%;
+    }
+}
+
+@media (min-width:1400px){
+
+ 
+    /*HOME*/
+
+    .main-home {
+        padding-top: 90px;
+    }
+
+    .ss-home-ppal {
+        height: 100%;
+    }
+
+    .main-home__cont-prod {
+        width: 75%;
+    }
+
+    .nav-cont{
+        width: 75%;
+    }
+
+    .vertical-div{
+        height: 124px;
+    }
+
+    .featured-product{
+        width: 75%;
+    }
+
+    .index__contact-us {
+        justify-content: space-evenly;
+        width: 75%;
+    }
+
+    
+    /*CONTACTO*/
+    .contactForm{
+        width: 75%;
+    }
+
+
+}

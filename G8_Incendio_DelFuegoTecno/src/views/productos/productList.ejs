@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head', {title: 'DFT - Todos los productos'})%> 
+<body>
+    <%- include('../partials/header') %> 
+
+    <main class="main-general">
+
+        <section class="prodListing">
+
+            
+            <%- include('../components/productListNav') %> 
+        
+            <section class="prodDisplay">
+                <% if (productsDB == "") { %>
+                    <h3 class="titulo__prod">No se encontraron resultados que coincidan con tu búsqueda</span></h3>
+                    <% }else { %>
+                        <% productsDB.forEach(product => { %>
+              
+                            <%- include('../components/singleProduct', {product : product}) %> 
+                            
+                        <% }) %>
+                      <% } %>
+
+          
+            
+            </section>
+
+        </section>
+        
+    </main>
+    
+    <%- include('../partials/footer') %> 
+</body>
+</html>

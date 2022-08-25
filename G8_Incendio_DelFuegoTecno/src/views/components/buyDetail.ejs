@@ -1,0 +1,65 @@
+<article class="rightArticle">
+
+    <h2 class="rightArticle-resumenDeOrden">Resumen De La Orden</h2>
+
+    <hr class="hr__divis">
+
+    <div class="rightArticle-div">
+
+        <p>Subtotal:</p>
+ 
+        <p><% let subtotal = 0 %>
+
+            <% productsDB.forEach((element, index) => { %>
+                <% if(index < 3){  %>
+                    <%  subtotal += element.price; %>
+                    <% } %>
+            <% }) %>
+            
+            <%= '$'+subtotal.toLocaleString('es-ES') %></p>
+    </div>
+
+    <div class="rightArticle-div">
+
+        <p>Costo del envio:</p>
+
+        <p>$400</p>
+
+    </div>
+
+    <div class="rightArticle-div-cupon">
+        <label class="rightArticle-div" for="cupon">
+            <p class="lg__descrip">Cupón de Descuento</p>                        
+            <input type="text" id="cupon" name="name" placeholder="Ingrese su cupón..." required>
+            <span class="feedback"></span>
+        </label>
+    </div>
+
+    <hr class="hr__divis">
+
+    <div class="rightArticle-div-total">
+
+        <p class="totalP">Total:</p>
+
+        <p class="totalPrice">$   <% let totalPrice = 0 %>
+
+            <% productsDB.forEach((element, index) => { %>
+                <% if(index < 3){  %>
+                    <%  totalPrice += element.price; %>
+                    <% } %>
+            <% }) %>
+            
+            <% totalPrice = totalPrice + 400%>
+            <%= totalPrice.toLocaleString('es-ES')  %></p>
+
+    </div>
+
+    <hr class="hr__divis">
+
+    <div class="rightArticle-div-finalizar">
+
+        <%- include('./buyButton') %> 
+
+    </div>
+
+</article>
